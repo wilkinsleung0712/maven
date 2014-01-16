@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTransactionsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTransactionsLabel_TId}"/>
+                    <h:outputText value="#{transactionsController.selected.TId}" title="#{bundle.ViewTransactionsTitle_TId}"/>
+                    <h:outputText value="#{bundle.ViewTransactionsLabel_amount}"/>
+                    <h:outputText value="#{transactionsController.selected.amount}" title="#{bundle.ViewTransactionsTitle_amount}"/>
+                    <h:outputText value="#{bundle.ViewTransactionsLabel_description}"/>
+                    <h:outputText value="#{transactionsController.selected.description}" title="#{bundle.ViewTransactionsTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewTransactionsLabel_accnum}"/>
+                    <h:outputText value="#{transactionsController.selected.accnum}" title="#{bundle.ViewTransactionsTitle_accnum}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{transactionsController.destroyAndView}" value="#{bundle.ViewTransactionsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTransactionsEditLink}"/>
+                <br />
+                <h:commandLink action="#{transactionsController.prepareCreate}" value="#{bundle.ViewTransactionsCreateLink}" />
+                <br />
+                <h:commandLink action="#{transactionsController.prepareList}" value="#{bundle.ViewTransactionsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTransactionsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

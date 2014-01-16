@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSavingsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSavingsLabel_accnum}" for="accnum" />
+                    <h:inputText id="accnum" value="#{savingsController.selected.accnum}" title="#{bundle.EditSavingsTitle_accnum}" required="true" requiredMessage="#{bundle.EditSavingsRequiredMessage_accnum}"/>
+                    <h:outputLabel value="#{bundle.EditSavingsLabel_balance}" for="balance" />
+                    <h:inputText id="balance" value="#{savingsController.selected.balance}" title="#{bundle.EditSavingsTitle_balance}" />
+                    <h:outputLabel value="#{bundle.EditSavingsLabel_CId}" for="CId" />
+                    <h:selectOneMenu id="CId" value="#{savingsController.selected.CId}" title="#{bundle.EditSavingsTitle_CId}" >
+                        <f:selectItems value="#{customerController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{savingsController.update}" value="#{bundle.EditSavingsSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSavingsViewLink}"/>
+                <br />
+                <h:commandLink action="#{savingsController.prepareList}" value="#{bundle.EditSavingsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSavingsIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

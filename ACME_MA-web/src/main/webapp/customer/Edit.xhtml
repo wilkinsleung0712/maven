@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCustomerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCustomerLabel_CId}" for="CId" />
+                    <h:inputText id="CId" value="#{customerController.selected.CId}" title="#{bundle.EditCustomerTitle_CId}" required="true" requiredMessage="#{bundle.EditCustomerRequiredMessage_CId}"/>
+                    <h:outputLabel value="#{bundle.EditCustomerLabel_firtname}" for="firtname" />
+                    <h:inputText id="firtname" value="#{customerController.selected.firtname}" title="#{bundle.EditCustomerTitle_firtname}" />
+                    <h:outputLabel value="#{bundle.EditCustomerLabel_lastname}" for="lastname" />
+                    <h:inputText id="lastname" value="#{customerController.selected.lastname}" title="#{bundle.EditCustomerTitle_lastname}" />
+                    <h:outputLabel value="#{bundle.EditCustomerLabel_dob}" for="dob" />
+                    <h:inputText id="dob" value="#{customerController.selected.dob}" title="#{bundle.EditCustomerTitle_dob}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCustomerLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{customerController.selected.address}" title="#{bundle.EditCustomerTitle_address}" />
+                </h:panelGrid>
+                <h:commandLink action="#{customerController.update}" value="#{bundle.EditCustomerSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCustomerViewLink}"/>
+                <br />
+                <h:commandLink action="#{customerController.prepareList}" value="#{bundle.EditCustomerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCustomerIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
