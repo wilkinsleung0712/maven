@@ -4,6 +4,8 @@ import ACME_BANK.persistence.entities.Customer;
 import ACME_BANK.jsf.util.JsfUtil;
 import ACME_BANK.jsf.util.PaginationHelper;
 import ACME_BANK.jsf.session.CustomerFacade;
+import ACME_BANK.jsf.session.SavingsFacade;
+import ACME_BANK.persistence.entities.Savings;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -21,11 +23,27 @@ import javax.faces.model.SelectItem;
 @Named("customerController")
 @SessionScoped
 public class CustomerController implements Serializable {
-
-    private Customer current;
-    private DataModel items = null;
+    @EJB
+    private SavingsFacade savingsFacade;
+    
     @EJB
     private ACME_BANK.jsf.session.CustomerFacade ejbFacade;
+    
+    
+    private Customer current;
+    private Savings currentSavingsAccount;
+
+   
+    public Savings getCurrentSavingsAccount() {
+        return currentSavingsAccount;
+    }
+    private DataModel items = null;
+   
+
+    public SavingsFacade getSavingsFacade() {
+        return savingsFacade;
+    }
+    
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -82,10 +100,17 @@ public class CustomerController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
+            currentSavingsAccount=new Savings();
+            currentSavingsAccount.setCId(current);
+            currentSavingsAccount.setAccnum("S"+current.getCId());
+            currentSavingsAccount.setBalance(0);
+            getSavingsFacade().create(currentSavingsAccount);
+            
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("CustomerCreated"));
             return prepareCreate();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            e.printStackTrace();
             return null;
         }
     }
