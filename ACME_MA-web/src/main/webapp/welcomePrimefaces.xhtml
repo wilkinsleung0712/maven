@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <script type="text/javascript" src="resources/prime-theme/js/jquery-ui-1.10.3.custom.js"></script>
+             <link rel="stylesheet" type="text/css" href="resources/prime-theme/theme.css"/><!-- Link the css to the theme-->
+        </h:head>
+
+        <h:body>
+            <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="100" resizable="false" closable="true" collapsible="false">
+                    <div id="header">
+			<div class="header-block">
+				<h1 class="logo"></h1>
+				<ul id="nav">
+					<li><a id="menu-overview" href="#">Overview</a></li>
+					<li><a id="menu-demos" href="#">Demos</a></li>
+					<li><a id="menu-development" href="#">Development</a></li>
+					<li><a id="menu-support" href="#">Support</a></li>
+					<li><a id="menu-social" href="#">Social</a></li>
+				</ul>
+			</div>
+		</div>
+
+                    
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    <div id="footer">
+			<div class="footer-block">
+				<div class="box-section">
+                                 <div class="box">
+						<h4>Overview</h4>
+						<ul class="footer-list">
+							<li><a href="whyprimefaces">Why PrimeFaces</a></li>
+							<li><a href="whouses">Who Uses PrimeFaces</a></li>
+							<li><a href="testimonials">Testimonials</a></li>
+							<li><a href="license">License</a></li>
+							<li><a href="multimedia">Multimedia</a></li>
+							<li><a href="faq">FAQ</a></li>
+						</ul>
+					</div>
+
+                                 <div class="box">
+						<h4>Development</h4>
+						<ul class="footer-list">
+							<li><a href="gettingStarted">Getting Started</a></li>
+							<li><a href="documentation">Documentation</a></li>
+							<li><a href="downloads">Downloads</a></li>
+							<li><a href="http://code.google.com/p/primefaces/w/list">Wiki</a></li>
+							<li><a href="themes">Theme Gallery</a></li>
+							<li><a href="http://primefaces-extensions.github.com">Extensions</a></li>
+						</ul>
+                                  </div>
+                                </div>
+                        </div>
+                    </div>
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Navigation" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Home" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Login" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Policy" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="About" url="http://www.primefaces.org/themes.html" />
+
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+
